@@ -11,11 +11,11 @@ router.get('/', (req, res) => {
 });
 
 /**
- * [GET] products/:title // products?foo=bar=
+ * [GET] products/:name // products?foo=bar=
  */
-router.get('/:title', (req, res) => {
+router.get('/:name', (req, res) => {
     Product.findOne({
-        title: req.params.title
+        name: req.params.name
     }).then(
         data => res.send(data)
     ).catch(
@@ -38,21 +38,25 @@ router.post('/', (req, res) => {
 });
 
 /**
- * [PUT] products/:title
+ * [PUT] products/:name
  */
-router.put('/:title', (req, res) => {
-    Product.save(req.body).then(
-        data => res.send(data)
+router.put('/:name', (req, res) => {
+    Product.findOne({name: req.params.name}).then(
+        data => Object.assign(data, req.body).save().then(
+            data => res.send(data)
+        ).catch(
+            error => res.sendStatus(400)
+        )
     ).catch(
-        error => res.sendStatus(400)
+        error => res.sendStatus(404)
     )
-})
+});
 
 /**
- * [DELETE] products/:title
+ * [DELETE] products/:name
  */
-router.delete('/:title', (req, res) => {
-    Product.delete(req.body).then(
+router.delete('/:name', (req, res) => {
+    Product.remove({name: req.params.name}).then(
         data => res.sendStatus(204)
     ).catch(
         error => res.sendStatus(404)
