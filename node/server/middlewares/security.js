@@ -9,20 +9,20 @@ const verifyToken = (req, res, next) => {
 
             if ( !auth || !auth.startsWith('Bearer ') )
                 res.sendStatus(401);
-
-            verifyJWTToken(auth.replace('Bearer ', ''))
-            .then( (decodedToken) => {
-                req.user = decodedToken;
-                next();
-            })
-            .catch( (error) => {
-                res.status(400).send({
-                    error: 'JWT Token invalid',
-                    details: error
+            else {
+                verifyJWTToken(auth.replace('Bearer ', ''))
+                .then( (decodedToken) => {
+                    req.user = decodedToken;
+                    next();
+                })
+                .catch( (error) => {
+                    res.status(400).send({
+                        error: 'JWT Token invalid',
+                        details: error
+                    });
                 });
-            });
+            } 
         }
-
 }
 
 module.exports = {

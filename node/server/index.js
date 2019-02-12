@@ -15,8 +15,8 @@ const app = express();
 app.use(bodyParser.json());
 
 app.use(security.verifyToken);
-app.use(securityRouter)
 
+app.use(securityRouter);
 app.use('/movies', movieRouter);
 app.use('/products', productRouter);
 app.use('/users', userRouter);
