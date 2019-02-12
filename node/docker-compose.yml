@@ -2,7 +2,7 @@ version: '3.1'
 
 services:
   server:
-    image: 'node:latest'
+    build: './server'
     volumes:
         - './server:/home/node/app'
     working_dir: '/home/node/app'
@@ -10,9 +10,8 @@ services:
        MONGODB_USER: "root"
        MONGODB_PWD: "password"
        MONGODB_DBNAME: "SampleCollections"
-    command: 'npm test'
     ports:
-        - '3000:3000'
+        - '127.0.0.1:3000:3000'
     command: 'npm start'
 
   mongo:
