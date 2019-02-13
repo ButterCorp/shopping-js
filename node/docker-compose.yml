@@ -9,7 +9,7 @@ services:
     environment:
        MONGODB_USER: "root"
        MONGODB_PWD: "password"
-       MONGODB_DBNAME: "SampleCollections"
+       MONGODB_DBNAME: "shopping"
        JWT_SECRET: "MyBestSecret"
     ports:
         - '127.0.0.1:3000:3000'
@@ -32,4 +32,14 @@ services:
       - 127.0.0.1:8088:8081
     environment:
       ME_CONFIG_MONGODB_ADMINUSERNAME: root
-      ME_CONFIG_MONGODB_ADMINPASSWORD: password
+
+  client:
+    build: './client'
+    volumes:
+        - './client:/home/node/app'
+    environment: 
+      CHOKIDAR_USEPOLLING: 'true'
+    working_dir: '/home/node/app'
+    ports:
+        - '127.0.0.1:3001:3000'
+    command: 'yarn start'

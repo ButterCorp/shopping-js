@@ -5,7 +5,7 @@ const productRouter = require('./routes/product');
 const userRouter = require('./routes/user');
 const categoryRouter = require('./routes/category');
 const securityRouter = require('./routes/security');
-
+const cors = require('cors');
 const bodyParser = require('body-parser');
 
 const security = require('./middlewares/security');
@@ -13,7 +13,7 @@ const security = require('./middlewares/security');
 const app = express();
 
 app.use(bodyParser.json());
-
+app.use(cors());
 app.use(security.verifyToken);
 
 app.use(securityRouter);
