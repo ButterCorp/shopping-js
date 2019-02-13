@@ -6,6 +6,7 @@ import {BrowserRouter as Router, Route} from 'react-router-dom';
 import {Switch, Link} from 'react-router-dom';
 import SecurityContainer from "./containers/SecurityContainer";
 import MovieContainer from "./containers/MovieContainer";
+import MenuComponent from './components/MenuComponent';
 
 class App extends Component {
 
@@ -17,8 +18,8 @@ class App extends Component {
 
     return (
       <div className="App">
+        <MenuComponent/>
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" style={style}/>
             <ToggleButtonContainer/>
             <Router>
               <React.Fragment>
