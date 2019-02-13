@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import ToggleButtonContainer from './containers/ToggleButtonContainer';
+import {BrowserRouter as Router, Route} from 'react-router-dom';
+import {Switch, Link} from 'react-router-dom';
+import SecurityContainer from "./containers/SecurityContainer";
+import MovieContainer from "./containers/MovieContainer";
 
 class App extends Component {
 
@@ -15,18 +19,17 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" style={style}/>
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
             <ToggleButtonContainer/>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
+            <Router>
+              <React.Fragment>
+                  <Link to='/security/login'>Login</Link>
+                  <Link to='/movies'>Movies</Link>
+                <Switch>
+                  <Route path="/security" component={SecurityContainer}/>
+                  <Route path="/movies" component={MovieContainer}/>    
+                </Switch>
+              </React.Fragment>       
+            </Router>
         </header>
       </div>
     );

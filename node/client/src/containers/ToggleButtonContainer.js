@@ -28,10 +28,10 @@ export default class ToggleButtonContainer extends React.Component {
 
     render() { //chaque composant a render
         return ( //React.Fragment obligatoire si return + deux balises
-            <> 
+            <React.Fragment> 
                 <ToggleButton toggleHandler={this.toogleTheme}/>
                 <Banner content={this.state.theme}/>
-            </>
+            </React.Fragment>
         )
     }
 

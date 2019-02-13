@@ -19,6 +19,8 @@ services:
     build: './client'
     volumes:
         - './client:/home/node/app'
+    environment: 
+      CHOKIDAR_USEPOLLING: 'true'
     working_dir: '/home/node/app'
     ports:
         - '127.0.0.1:3001:3000'

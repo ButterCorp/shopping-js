@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require('cors');
 
 const movieRouter = require('./routes/movie');
 const productRouter = require('./routes/product');
@@ -13,6 +14,8 @@ const security = require('./middlewares/security');
 const app = express();
 
 app.use(bodyParser.json());
+
+app.use(cors());
 
 app.use(security.verifyToken);
 
