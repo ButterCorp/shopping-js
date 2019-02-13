@@ -1,16 +1,24 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import ToggleButtonContainer from './containers/ToggleButtonContainer';
 
 class App extends Component {
+
   render() {
+
+    const style = {
+      maxHeight: 50
+    };
+
     return (
       <div className="App">
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
+          <img src={logo} className="App-logo" alt="logo" style={style}/>
           <p>
             Edit <code>src/App.js</code> and save to reload.
           </p>
+            <ToggleButtonContainer/>
           <a
             className="App-link"
             href="https://reactjs.org"
