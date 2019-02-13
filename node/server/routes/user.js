@@ -1,5 +1,6 @@
 const express = require('express');
 const User = require('../models/user');
+const bcrypt = require('bcryptjs');
 
 const router = express.Router();
 
@@ -24,7 +25,7 @@ router.get('/:username', (req, res) => {
 /**
  * [PUT] Edit username.
  */
-router.put('/:username/edit', (req, res) => {
+router.put('/:username', (req, res) => {
     User.findOne({username: req.params.username}).then(
         data => Object.assign(data, req.body).save().then(
             data => res.send(data)
@@ -39,14 +40,20 @@ router.put('/:username/edit', (req, res) => {
 /**
  * [POST] Create User.
  */
-router.post('/new', (req, res) => {
+router.post('/', (req, res) => {
 
-    const user = new User(req.body);
+    const user = new User({
+        username: req.body.username,
+        password: bcrypt.hashSync(req.body.password, 10)
+    });
 
     user.save().then(
         data => res.status(201).send(data)
     ).catch(
-        error => res.sendStatus(204)
+        error => {
+            res.sendStatus(204);
+            console.log(error);
+        }
     );
 });
 

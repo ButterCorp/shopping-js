@@ -1,9 +1,6 @@
 const db = require('../libs/db');
 const mongoose = require('mongoose'),
-    Schema = mongoose.Schema,
-    bcrypt = require('bcryptjs')
-    SALT_WORK_FACTOR = 10;
-
+    Schema = mongoose.Schema;
 
 const userDetailsSchema = new Schema({
     username: {type: String, required: true, unique: true}, 
