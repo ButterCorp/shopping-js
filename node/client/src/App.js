@@ -13,10 +13,6 @@ class App extends Component {
 
   render() {
 
-    const style = {
-      maxHeight: 50
-    };
-
     return (
       <div className="App">
         <MenuComponent/>

@@ -80,7 +80,7 @@ function SearchAppBar(props) {
             <MenuIcon />
           </IconButton>
           <Typography className={classes.title} variant="h6" color="inherit" noWrap>
-            Material-UI
+            Shopping JS
           </Typography>
           <div className={classes.grow} />
           <div className={classes.search}>

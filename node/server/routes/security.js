@@ -11,7 +11,7 @@ router.post('/login_check', (req, res) => {
     .then(data => {
         if ( bcrypt.compareSync(req.body.password, data.password) ) {
             const token = createToken({
-                username: 'user'
+                username: data.username
             })
     
             res.send( {
@@ -23,7 +23,9 @@ router.post('/login_check', (req, res) => {
             })
         }
     }).catch(
-        error => res.sendStatus(500)
+        error => {
+            res.sendStatus(500);
+        }
     );
 })
 

@@ -5,7 +5,7 @@ import {connect} from 'react-redux';
 class ProfileBanner extends React.Component {
     render () {
         const { user, isLogged } = this.props;
-        return (<Banner content={isLogged ? user.name : 'Not Connected'}/>)
+        return (<Banner content={isLogged ? user.token : 'Not Connected'}/>)
     }
 }
 
