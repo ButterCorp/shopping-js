@@ -1,19 +1,18 @@
 import React from 'react';
-import { Redirect } from 'react-router-dom'
+import {BrowserRouter as Router } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
-import { Drawer, CssBaseline, AppBar, Toolbar, List, Link, Typography, IconButton, ListItem,
-        ListItemText, ListItemIcon, Button, Divider } from '@material-ui/core';
+import { Drawer, CssBaseline, AppBar, Toolbar, List, Typography, IconButton, ListItem,
+        ListItemText, ListItemIcon, Divider } from '@material-ui/core';
 
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-//import ListItemIcon from '@material-ui/core/ListItemIcon';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
-
-import MovieContainer from "../containers/MovieContainer";
+import BalotIcon from '@material-ui/icons/Ballot';
+import AccountBalanceIcon from '@material-ui/icons/AccountBalance';
 
 const drawerWidth = 240;
 
@@ -134,18 +133,20 @@ class PersistentDrawerLeft extends React.Component {
             </IconButton>
           </div>
           <Divider />
-          <List>
-            {['Objets en vente', 'Mes objets', 'Mes transactions'].map((text, index) => (
-              <ListItem button key={text}>
-                <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-                <ListItemText primary={text} />
-              </ListItem>
-            ))}
-            <ListItem>
-                <ListItemIcon> <InboxIcon /> </ListItemIcon>
-                <ListItemText onClick={this.handleRedirect('/products')} primary={"Objets en vente"} />
-              </ListItem>
-          </List>
+              <List>
+                <ListItem button component={Link} to='/products'>
+                  <ListItemIcon> <BalotIcon /> </ListItemIcon>
+                  <ListItemText primary={"Objets en vente"} />
+                </ListItem>
+                <ListItem button component={Link} to="/my-objects">
+                  <ListItemIcon> <InboxIcon /> </ListItemIcon>
+                  <ListItemText primary={"Mes objets"} />
+                </ListItem>
+                <ListItem button component={Link} to="/transactions">
+                  <ListItemIcon> <AccountBalanceIcon /> </ListItemIcon>
+                  <ListItemText primary={"Mes transactions"} />
+                </ListItem>
+              </List>
         </Drawer>
         <main
           className={classNames(classes.content, {
