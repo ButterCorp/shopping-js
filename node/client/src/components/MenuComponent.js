@@ -1,5 +1,4 @@
 import React from 'react';
-import {BrowserRouter as Router } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
@@ -12,6 +11,7 @@ import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import BalotIcon from '@material-ui/icons/Ballot';
+import PersonPinIcon from '@material-ui/icons/PersonPin';
 import AccountBalanceIcon from '@material-ui/icons/AccountBalance';
 
 const drawerWidth = 240;
@@ -145,6 +145,10 @@ class PersistentDrawerLeft extends React.Component {
                 <ListItem button component={Link} to="/transactions">
                   <ListItemIcon> <AccountBalanceIcon /> </ListItemIcon>
                   <ListItemText primary={"Mes transactions"} />
+                </ListItem>
+                <ListItem button component={Link} to="/security/Login">
+                  <ListItemIcon> <PersonPinIcon /> </ListItemIcon>
+                  <ListItemText primary={"Se connecter"} />
                 </ListItem>
               </List>
         </Drawer>

@@ -20,11 +20,7 @@ class App extends Component {
       <div className="App">
         <MenuComponent/>
         <header className="App-header">
-            <ToggleButtonContainer/>
-            <ProfileBanner/>
               <React.Fragment>
-                  <Link to='/security/login'>Login</Link>
-                  <Link to='/movies'>Movies</Link>
                 <Switch>
                   <Route path="/security" component={SecurityContainer}/>
                   <Route path="/movies" component={MovieContainer}/>  
