@@ -8,14 +8,6 @@ export default class SecurityContainer extends React.Component {
 
         //Gerer le submit
         console.log(JSON.stringify(data));
-        fetch('http://localhost:3000/login_check', {
-            method: 'POST',
-            headers: {
-                'Content-Type':'application/json'   
-            },
-            body: JSON.stringify(data)
-        }).then(response => response.json())
-        .then(data => localStorage.setItem('token', data.token))
     }
 
     render() { 

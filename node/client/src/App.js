@@ -7,6 +7,7 @@ import {Switch, Link} from 'react-router-dom';
 import SecurityContainer from "./containers/SecurityContainer";
 import MovieContainer from "./containers/MovieContainer";
 import MenuComponent from './components/MenuComponent';
+import ProfileBanner from './containers/ProfileBanner';
 
 class App extends Component {
 
@@ -21,6 +22,7 @@ class App extends Component {
         <MenuComponent/>
         <header className="App-header">
             <ToggleButtonContainer/>
+            <ProfileBanner/>
             <Router>
               <React.Fragment>
                   <Link to='/security/login'>Login</Link>
